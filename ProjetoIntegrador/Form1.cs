@@ -12,108 +12,103 @@ namespace ProjetoIntegrador
 {
     public unsafe partial class Form1 : Form
     {
-        Pilha[] p1;
-
         int primeiro = 0, ultimo = 0, total = 0;
        
-        Fila[] fila1;
+        //Fila[] fila1;
         
-        struct Fila {
-            public int? dado { get; set; }
-        }
+        //struct Fila {
+        //    public int? dado { get; set; }
+        //}
 
-        bool InserirFila(int elemento)
-        {
-            if (IsFullFila())
-                return false;
-            else
-            {
-                fila1[ultimo].dado = elemento;
-                ultimo = (ultimo + 1) % fila1.Length;
-                total++;
-                return true;
-            }
-        }
+        //bool InserirFila(int elemento)
+        //{
+        //    if (IsFullFila())
+        //        return false;
+        //    else
+        //    {
+        //        fila1[ultimo].dado = elemento;
+        //        ultimo = (ultimo + 1) % fila1.Length;
+        //        total++;
+        //        return true;
+        //    }
+        //}
 
-        bool RemoverFila()
-        {
-            if (IsEmpityFila())
-                //atenção
-                return false;
-            else
-            {
-                //atenção
-                return true;
-            }
-        }
+        //bool RemoverFila()
+        //{
+        //    if (IsEmpityFila())
+        //        //atenção
+        //        return false;
+        //    else
+        //    {
+        //        //atenção
+        //        return true;
+        //    }
+        //}
 
-        bool IsEmpityFila()
-        {
-            if (total == 0)
-                return true;
-            else
-                return false;
-        }
+        //bool IsEmpityFila()
+        //{
+        //    if (total == 0)
+        //        return true;
+        //    else
+        //        return false;
+        //}
 
-        bool IsFullFila()
-        {
-            if (total == fila1.Length)
-                return true;
-            else
-                return false;
-        }
+        //bool IsFullFila()
+        //{
+        //    if (total == fila1.Length)
+        //        return true;
+        //    else
+        //        return false;
+        //}
 
-        Pilha[] pilha1;
+        Pilha pilha1;
+
         int topo = -1;
 
-        struct Pilha
-        {
-            public int? dado { get; set; }
-        }
+        //bool InserirPilha(int elemento)
+        //{
+        //    if (IsFullPilha())
+        //        return false;
+        //    else
+        //    {
+        //        topo++;
+        //        lblTopo.Text = Convert.ToString(topo);
+        //        pilha1[topo].dado = elemento;
+        //        pilha1[topo].proximo = pilha1[topo + 1];
+        //        return true;
+        //    }
+        //}
 
-        bool InserirPilha(int elemento)
-        {
-            if (IsFullPilha())
-                return false;
-            else
-            {
-                topo++;
-                lblTopo.Text = Convert.ToString(topo);
-                pilha1[topo].dado = elemento;
-                return true;
-            }
-        }
+        //bool IsEmpityPilha()
+        //{
+        //    if (topo == -1)
+        //        return true;
+        //    else
+        //        return false;
+        //}
 
-        bool IsEmpityPilha()
-        {
-            if (topo == -1)
-                return true;
-            else
-                return false;
-        }
+        //bool IsFullPilha()
+        //{
+        //    if (topo == (pilha1.Length - 1))
+        //        return true;
+        //    else
+        //        return false;
+        //}
 
-        bool IsFullPilha()
-        {
-            if (topo == (pilha1.Length - 1))
-                return true;
-            else
-                return false;
-        }
-
-        bool RemoverPilha()
-        {
-            if (IsEmpityPilha())
-            {
-                return false;
-            } 
-            else
-            {
-                pilha1[topo].dado = null;
-                topo--;
-                lblTopo.Text = Convert.ToString(topo);
-                return true;
-            }
-        }
+        //bool RemoverPilha()
+        //{
+        //    if (IsEmpityPilha())
+        //    {
+        //        return false;
+        //    } 
+        //    else
+        //    {
+        //        pilha1[topo].dado = null;
+        //        topo--;
+        //        lblTopo.Text = Convert.ToString(topo);
+        //        return true;
+        //    }
+        //}
 
         public Form1()
         {
@@ -138,8 +133,8 @@ namespace ProjetoIntegrador
         private void btnEnviar_Click(object sender, EventArgs e)
         {
             int num = Convert.ToInt16(txtTam.Text);
-            pilha1 = new Pilha[num];
-            fila1 = new Fila[num];
+            pilha1 = new Pilha(num);
+            //fila1 = new Fila[num];
             btnEnviar.Enabled = false;
             btnInserir.Enabled = true;
             btnRemover.Enabled = true;
@@ -154,10 +149,19 @@ namespace ProjetoIntegrador
         public void btnInserir_Click(object sender, EventArgs e)
         {
             if (txtValor.Text != null) {
-                if((InserirPilha(Convert.ToInt32(txtValor.Text)) == true) && (InserirFila(Convert.ToInt32(txtValor.Text)) == true))
-                {
-                    lbPilha.Items.Add(pilha1[topo].dado);
-                    lbFila.Items.Add(fila1[ultimo].dado);
+                if((pilha1.InserirPilha(Convert.ToInt32(txtValor.Text)) == true))
+                {                    
+                    Estrutura[] valor = pilha1.getPilha();
+                    lbPilha.Items.Clear();
+
+
+                    for (int i = (valor.Length -1) ; i >= 0 ; i--) {
+                        if (valor[i] != null) {
+                            lbPilha.Items.Add(valor[i].dado);
+                        }
+                    }
+
+                    //lbFila.Items.Add(fila1[ultimo].dado);
                     txtValor.Text = "";
                 }
                 else
@@ -169,10 +173,10 @@ namespace ProjetoIntegrador
 
         private void btnRemover_Click_1(object sender, EventArgs e)
         {
-            if (RemoverPilha() && RemoverFila())
-                lbPilha.Items.RemoveAt(topo+1);
-            else
-                MessageBox.Show("Fila/Pilha vazia, impossível de remover!", "Is Empity", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //if (RemoverPilha() && RemoverFila())
+                //lbPilha.Items.RemoveAt(topo+1);
+            //
+                //MessageBox.Show("Fila/Pilha vazia, impossível de remover!", "Is Empity", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
     }
 }

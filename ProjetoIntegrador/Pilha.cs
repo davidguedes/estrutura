@@ -8,60 +8,23 @@ namespace ProjetoIntegrador
 {
     class Pilha
     {
-        private int? dado { get; set; }
-        private Pilha proximo { get; set; }
-        private int topo;
+        private Estrutura[] estruturaP;
+        private int topo = -1;
 
-        public Pilha()
-        {
-            topo = -1;
+        public Pilha(int numPosicao) {
+            this.estruturaP = new Estrutura [numPosicao];
         }
 
-        Pilha[] pilha1;
-        Form1 f = new Form1();
-
-        bool IsEmpityPilha()
+        public bool InserirPilha(int elemento)
         {
-            if (topo == -1)
-                return true;
-            else
-                return false;
+            Estrutura e1 = new Estrutura(elemento, null);
+            topo++;
+            this.estruturaP[topo] = e1;
+            return true;
         }
 
-        bool IsFullPilha()
-        {
-            if (topo == (pilha1.Length - 1))
-                return true;
-            else
-                return false;
-        }
-
-        bool InserirPilha(int elemento)
-        {
-            if (IsFullPilha())
-                return false;
-            else
-            {
-                topo++;
-                f.lblTopo.Text = Convert.ToString(topo);
-                pilha1[topo].dado = elemento;
-                return true;
-            }
-        }
-
-        bool RemoverPilha()
-        {
-            if (IsEmpityPilha())
-            {
-                return false;
-            }
-            else
-            {
-                pilha1[topo].dado = null;
-                topo--;
-                f.lblTopo.Text = Convert.ToString(topo);
-                return true;
-            }
+        public Estrutura[] getPilha() {
+            return this.estruturaP;
         }
     }
 }
