@@ -12,8 +12,6 @@ namespace ProjetoIntegrador
 {
     public unsafe partial class Form1 : Form
     {
-        int primeiro = 0, ultimo = 0, total = 0;
-       
         //Fila[] fila1;
         
         //struct Fila {
@@ -62,8 +60,6 @@ namespace ProjetoIntegrador
         //}
 
         Pilha pilha1;
-
-        int topo = -1;
 
         //bool InserirPilha(int elemento)
         //{
@@ -134,7 +130,6 @@ namespace ProjetoIntegrador
         {
             int num = Convert.ToInt16(txtTam.Text);
             pilha1 = new Pilha(num);
-            //fila1 = new Fila[num];
             btnEnviar.Enabled = false;
             btnInserir.Enabled = true;
             btnRemover.Enabled = true;
@@ -149,23 +144,9 @@ namespace ProjetoIntegrador
         public void btnInserir_Click(object sender, EventArgs e)
         {
             if (txtValor.Text != null) {
-                if((pilha1.InserirPilha(Convert.ToInt32(txtValor.Text)) == true))
-                {                    
-                    Estrutura[] valor = pilha1.getPilha();
-                    lbPilha.Items.Clear();
-
-
-                    for (int i = (valor.Length -1) ; i >= 0 ; i--) {
-                        if (valor[i] != null) {
-                            lbPilha.Items.Add(valor[i].dado);
-                        }
-                    }
-
-                    //lbFila.Items.Add(fila1[ultimo].dado);
-                    txtValor.Text = "";
-                }
-                else
-                    MessageBox.Show("Fila/Pilha cheia, impossível de adicionar!", "Is Full", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                pilha1.Inserir(Convert.ToInt32(txtValor.Text));
+                pilha1.Mostrar(lbPilha);
+                txtValor.Text = "";
             }
             else
                 MessageBox.Show("Campo VALOR vazio, impossível de adicionar!", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -173,10 +154,8 @@ namespace ProjetoIntegrador
 
         private void btnRemover_Click_1(object sender, EventArgs e)
         {
-            //if (RemoverPilha() && RemoverFila())
-                //lbPilha.Items.RemoveAt(topo+1);
-            //
-                //MessageBox.Show("Fila/Pilha vazia, impossível de remover!", "Is Empity", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            pilha1.Remover();
+            pilha1.Mostrar(lbPilha);
         }
     }
 }
