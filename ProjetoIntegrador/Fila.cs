@@ -10,7 +10,7 @@ namespace ProjetoIntegrador
     class Fila
     {
         private Estrutura[] estruturaF;
-        int primeiro = 0, ultimo = 0;
+        int ultimo = 0;
         
         public Fila(int numPosicao)
         {
@@ -19,7 +19,7 @@ namespace ProjetoIntegrador
 
         public void Inserir(int elemento)
         {
-            if(this.ultimo >= this.estruturaF.Length - 1)
+            if(this.ultimo > this.estruturaF.Length - 1)
             {
                 MessageBox.Show("Não foi possível inserir.", "Fila Cheia", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -31,6 +31,22 @@ namespace ProjetoIntegrador
                 this.estruturaF[ultimo - 1].proximo = e1;
 
             this.estruturaF[this.ultimo] = e1;
+            this.ultimo++;
+            return;
+        }
+
+        public void Remover(){
+            if(this.ultimo < 0){
+                MessageBox.Show("Não foi possível remover.", "Fila Vazia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            this.estruturaF[0] = null;
+
+            for(int i = 0; i < this.ultimo; i++){
+                this.estruturaF[i] = this.estruturaF[i+1];
+            }
+            this.ultimo--;
             return;
         }
 

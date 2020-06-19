@@ -161,6 +161,8 @@ namespace ProjetoIntegrador
         {
             pilha1.Remover();
             pilha1.Mostrar(lbPilha);
+            fila1.Remover();
+            fila1.Mostrar(lbFila);
         }
     }
 }
