@@ -13,20 +13,19 @@ namespace ProjetoIntegrador
         private int topo = -1;
 
         public Pilha(int numPosicao) {
-            this.estruturaP = new Estrutura [numPosicao];
+            this.estruturaP = new Estrutura[numPosicao];
         }
 
         public void Inserir(int elemento)
         {
-            if (this.topo >= (estruturaP.Length-1)) {
+            if (this.topo >= (this.estruturaP.Length-1)) {
                 MessageBox.Show("Não foi possível inserir.", "Pilha Cheia", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             this.topo++;
             Estrutura e1 = new Estrutura(elemento, null);
-            if (this.topo > 0) {
+            if (this.topo > 0)
                 this.estruturaP[topo - 1].proximo = e1;
-            }
 
             this.estruturaP[this.topo] = e1;
             return;
@@ -38,9 +37,9 @@ namespace ProjetoIntegrador
                 return;
             }
             this.estruturaP[this.topo] = null;
-            if (this.topo > 0) {
+
+            if (this.topo > 0)
                 this.estruturaP[this.topo - 1].proximo = null;
-            }
             
             this.topo--;
             return;
@@ -50,13 +49,10 @@ namespace ProjetoIntegrador
         {
             valores.Items.Clear();
 
-
             for (int i = (this.estruturaP.Length - 1); i >= 0; i--)
             {
                 if (this.estruturaP[i] != null)
-                {
                     valores.Items.Add(this.estruturaP[i].dado);
-                }
             }
         }
 

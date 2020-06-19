@@ -60,6 +60,7 @@ namespace ProjetoIntegrador
         //}
 
         Pilha pilha1;
+        Fila fila1;
 
         //bool InserirPilha(int elemento)
         //{
@@ -130,6 +131,8 @@ namespace ProjetoIntegrador
         {
             int num = Convert.ToInt16(txtTam.Text);
             pilha1 = new Pilha(num);
+            fila1 = new Fila(num);
+            txtTam.Enabled = false;
             btnEnviar.Enabled = false;
             btnInserir.Enabled = true;
             btnRemover.Enabled = true;
@@ -146,6 +149,8 @@ namespace ProjetoIntegrador
             if (txtValor.Text != null) {
                 pilha1.Inserir(Convert.ToInt32(txtValor.Text));
                 pilha1.Mostrar(lbPilha);
+                fila1.Inserir(Convert.ToInt32(txtValor.Text));
+                fila1.Mostrar(lbFila);
                 txtValor.Text = "";
             }
             else

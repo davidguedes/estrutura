@@ -152,7 +152,7 @@
         private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblTopo;
+        public System.Windows.Forms.Label lblTopo;
     }
 }
 
