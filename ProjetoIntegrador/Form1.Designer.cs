@@ -37,6 +37,8 @@
             this.btnInserir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTopo = new System.Windows.Forms.Label();
+            this.lblFila = new System.Windows.Forms.Label();
+            this.lblPilha = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtValor
@@ -121,11 +123,31 @@
             this.lblTopo.TabIndex = 12;
             this.lblTopo.Text = "--";
             // 
+            // lblFila
+            // 
+            this.lblFila.AutoSize = true;
+            this.lblFila.Location = new System.Drawing.Point(82, 169);
+            this.lblFila.Name = "lblFila";
+            this.lblFila.Size = new System.Drawing.Size(23, 13);
+            this.lblFila.TabIndex = 13;
+            this.lblFila.Text = "Fila";
+            // 
+            // lblPilha
+            // 
+            this.lblPilha.AutoSize = true;
+            this.lblPilha.Location = new System.Drawing.Point(241, 169);
+            this.lblPilha.Name = "lblPilha";
+            this.lblPilha.Size = new System.Drawing.Size(30, 13);
+            this.lblPilha.TabIndex = 14;
+            this.lblPilha.Text = "Pilha";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(473, 320);
+            this.Controls.Add(this.lblPilha);
+            this.Controls.Add(this.lblFila);
             this.Controls.Add(this.lblTopo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnInserir);
@@ -153,6 +175,8 @@
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label lblTopo;
+        private System.Windows.Forms.Label lblFila;
+        private System.Windows.Forms.Label lblPilha;
     }
 }
 
