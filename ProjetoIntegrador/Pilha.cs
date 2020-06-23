@@ -49,6 +49,8 @@ namespace ProjetoIntegrador
         {
             valores.Items.Clear();
 
+            this.estruturaP.Reverse();
+
             for (int i = (this.estruturaP.Length - 1); i >= 0; i--)
             {
                 if (this.estruturaP[i] != null)

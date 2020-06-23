@@ -42,7 +42,7 @@ namespace ProjetoIntegrador
                 return;
             }
 
-            for(int i = 0; i < this.ultimo-1; i++){
+            for(int i = 0; i < this.ultimo; i++){
                 this.estruturaF[i] = this.estruturaF[i+1];
             }
             this.estruturaF[ultimo] = null;
@@ -54,7 +54,7 @@ namespace ProjetoIntegrador
         {
             valores.Items.Clear();
 
-            for (int i = (this.estruturaF.Length - 1); i >= 0; i--)
+            for (int i = 0; i < this.estruturaF.Length; i++)
             {
                 if (this.estruturaF[i] != null)
                     valores.Items.Add(this.estruturaF[i].dado);

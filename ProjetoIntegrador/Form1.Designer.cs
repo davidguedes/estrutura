@@ -1,6 +1,6 @@
 ﻿namespace ProjetoIntegrador
 {
-    partial class Form1
+    partial class formIndex
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formIndex));
             this.txtValor = new System.Windows.Forms.TextBox();
             this.lbFila = new System.Windows.Forms.ListBox();
             this.lbPilha = new System.Windows.Forms.ListBox();
@@ -35,10 +36,12 @@
             this.btnEnviar = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
             this.btnInserir = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblTopo = new System.Windows.Forms.Label();
             this.lblFila = new System.Windows.Forms.Label();
             this.lblPilha = new System.Windows.Forms.Label();
+            this.lblBaseF = new System.Windows.Forms.Label();
+            this.lblTopoF = new System.Windows.Forms.Label();
+            this.lblTopoP = new System.Windows.Forms.Label();
+            this.lblBaseP = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtValor
@@ -48,6 +51,9 @@
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(100, 20);
             this.txtValor.TabIndex = 1;
+            this.txtValor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtValor_KeyDown);
+            this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
+            this.txtValor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtValor_MouseDown);
             // 
             // lbFila
             // 
@@ -71,6 +77,9 @@
             this.txtTam.Name = "txtTam";
             this.txtTam.Size = new System.Drawing.Size(100, 20);
             this.txtTam.TabIndex = 7;
+            this.txtTam.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTam_KeyDown);
+            this.txtTam.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTam_KeyPress);
+            this.txtTam.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTam_MouseDown);
             // 
             // btnEnviar
             // 
@@ -85,7 +94,7 @@
             // btnRemover
             // 
             this.btnRemover.Enabled = false;
-            this.btnRemover.Location = new System.Drawing.Point(284, 112);
+            this.btnRemover.Location = new System.Drawing.Point(97, 113);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(75, 23);
             this.btnRemover.TabIndex = 9;
@@ -96,32 +105,13 @@
             // btnInserir
             // 
             this.btnInserir.Enabled = false;
-            this.btnInserir.Location = new System.Drawing.Point(97, 112);
+            this.btnInserir.Location = new System.Drawing.Point(284, 113);
             this.btnInserir.Name = "btnInserir";
             this.btnInserir.Size = new System.Drawing.Size(75, 23);
             this.btnInserir.TabIndex = 10;
             this.btnInserir.Text = "Inserir";
             this.btnInserir.UseVisualStyleBackColor = true;
             this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(244, 287);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 13);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Valor do topo:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // lblTopo
-            // 
-            this.lblTopo.AutoSize = true;
-            this.lblTopo.Location = new System.Drawing.Point(323, 287);
-            this.lblTopo.Name = "lblTopo";
-            this.lblTopo.Size = new System.Drawing.Size(13, 13);
-            this.lblTopo.TabIndex = 12;
-            this.lblTopo.Text = "--";
             // 
             // lblFila
             // 
@@ -141,15 +131,54 @@
             this.lblPilha.TabIndex = 14;
             this.lblPilha.Text = "Pilha";
             // 
-            // Form1
+            // lblBaseF
+            // 
+            this.lblBaseF.AutoSize = true;
+            this.lblBaseF.Location = new System.Drawing.Point(48, 267);
+            this.lblBaseF.Name = "lblBaseF";
+            this.lblBaseF.Size = new System.Drawing.Size(31, 13);
+            this.lblBaseF.TabIndex = 11;
+            this.lblBaseF.Text = "Base";
+            this.lblBaseF.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // lblTopoF
+            // 
+            this.lblTopoF.AutoSize = true;
+            this.lblTopoF.Location = new System.Drawing.Point(47, 185);
+            this.lblTopoF.Name = "lblTopoF";
+            this.lblTopoF.Size = new System.Drawing.Size(32, 13);
+            this.lblTopoF.TabIndex = 15;
+            this.lblTopoF.Text = "Topo";
+            // 
+            // lblTopoP
+            // 
+            this.lblTopoP.AutoSize = true;
+            this.lblTopoP.Location = new System.Drawing.Point(370, 185);
+            this.lblTopoP.Name = "lblTopoP";
+            this.lblTopoP.Size = new System.Drawing.Size(32, 13);
+            this.lblTopoP.TabIndex = 17;
+            this.lblTopoP.Text = "Topo";
+            // 
+            // lblBaseP
+            // 
+            this.lblBaseP.AutoSize = true;
+            this.lblBaseP.Location = new System.Drawing.Point(371, 267);
+            this.lblBaseP.Name = "lblBaseP";
+            this.lblBaseP.Size = new System.Drawing.Size(31, 13);
+            this.lblBaseP.TabIndex = 16;
+            this.lblBaseP.Text = "Base";
+            // 
+            // formIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(473, 320);
+            this.Controls.Add(this.lblTopoP);
+            this.Controls.Add(this.lblBaseP);
+            this.Controls.Add(this.lblTopoF);
             this.Controls.Add(this.lblPilha);
             this.Controls.Add(this.lblFila);
-            this.Controls.Add(this.lblTopo);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblBaseF);
             this.Controls.Add(this.btnInserir);
             this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.btnEnviar);
@@ -157,7 +186,8 @@
             this.Controls.Add(this.lbPilha);
             this.Controls.Add(this.lbFila);
             this.Controls.Add(this.txtValor);
-            this.Name = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "formIndex";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProjetoIntegrador";
             this.ResumeLayout(false);
@@ -173,10 +203,12 @@
         private System.Windows.Forms.Button btnEnviar;
         private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.Button btnInserir;
-        private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Label lblTopo;
         private System.Windows.Forms.Label lblFila;
         private System.Windows.Forms.Label lblPilha;
+        private System.Windows.Forms.Label lblBaseF;
+        private System.Windows.Forms.Label lblTopoF;
+        private System.Windows.Forms.Label lblTopoP;
+        private System.Windows.Forms.Label lblBaseP;
     }
 }
 

@@ -10,104 +10,12 @@ using System.Windows.Forms;
 
 namespace ProjetoIntegrador
 {
-    public unsafe partial class Form1 : Form
+    public unsafe partial class formIndex : Form
     {
-        //Fila[] fila1;
-        
-        //struct Fila {
-        //    public int? dado { get; set; }
-        //}
-
-        //bool InserirFila(int elemento)
-        //{
-        //    if (IsFullFila())
-        //        return false;
-        //    else
-        //    {
-        //        fila1[ultimo].dado = elemento;
-        //        ultimo = (ultimo + 1) % fila1.Length;
-        //        total++;
-        //        return true;
-        //    }
-        //}
-
-        //bool RemoverFila()
-        //{
-        //    if (IsEmpityFila())
-        //        //atenção
-        //        return false;
-        //    else
-        //    {
-        //        //atenção
-        //        return true;
-        //    }
-        //}
-
-        //bool IsEmpityFila()
-        //{
-        //    if (total == 0)
-        //        return true;
-        //    else
-        //        return false;
-        //}
-
-        //bool IsFullFila()
-        //{
-        //    if (total == fila1.Length)
-        //        return true;
-        //    else
-        //        return false;
-        //}
-
         Pilha pilha1;
         Fila fila1;
 
-        //bool InserirPilha(int elemento)
-        //{
-        //    if (IsFullPilha())
-        //        return false;
-        //    else
-        //    {
-        //        topo++;
-        //        lblTopo.Text = Convert.ToString(topo);
-        //        pilha1[topo].dado = elemento;
-        //        pilha1[topo].proximo = pilha1[topo + 1];
-        //        return true;
-        //    }
-        //}
-
-        //bool IsEmpityPilha()
-        //{
-        //    if (topo == -1)
-        //        return true;
-        //    else
-        //        return false;
-        //}
-
-        //bool IsFullPilha()
-        //{
-        //    if (topo == (pilha1.Length - 1))
-        //        return true;
-        //    else
-        //        return false;
-        //}
-
-        //bool RemoverPilha()
-        //{
-        //    if (IsEmpityPilha())
-        //    {
-        //        return false;
-        //    } 
-        //    else
-        //    {
-        //        pilha1[topo].dado = null;
-        //        topo--;
-        //        lblTopo.Text = Convert.ToString(topo);
-        //        return true;
-        //    }
-        //}
-
-        public Form1()
+        public formIndex()
         {
             InitializeComponent();
         }
@@ -163,6 +71,53 @@ namespace ProjetoIntegrador
             pilha1.Mostrar(lbPilha);
             fila1.Remover();
             fila1.Mostrar(lbFila);
+        }
+
+        private void txtTam_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && !Char.IsControl(e.KeyChar) && !(e.KeyChar == (char)Keys.Space)) e.Handled = true;
+        }
+
+        private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && !Char.IsControl(e.KeyChar) && !(e.KeyChar == (char)Keys.Space)) e.Handled = true;
+        }
+
+        private void txtTam_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Space)
+                e.SuppressKeyPress = true;
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnEnviar_Click(sender, e);
+                txtValor.Focus();
+            }
+                
+            if (e.Control && e.KeyValue == 86)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtValor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Space)
+                e.SuppressKeyPress = true;
+            if (e.KeyCode == Keys.Enter)
+                btnInserir_Click(sender, e);
+        }
+
+        private void txtTam_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+                MessageBox.Show("Botão direito sobre a caixa de texto desabilitada.");
+        }
+
+        private void txtValor_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+                MessageBox.Show("Botão direito sobre a caixa de texto desabilitada.");
         }
     }
 }
