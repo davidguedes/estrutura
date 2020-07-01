@@ -55,6 +55,8 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lista.cs" />
+    <Compile Include="ListaLE.cs" />
     <Compile Include="Pilha.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
