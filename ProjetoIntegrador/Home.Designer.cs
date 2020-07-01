@@ -42,6 +42,7 @@
             this.lblTopoF = new System.Windows.Forms.Label();
             this.lblTopoP = new System.Windows.Forms.Label();
             this.lblBaseP = new System.Windows.Forms.Label();
+            this.lblTamanho = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtValor
@@ -168,11 +169,21 @@
             this.lblBaseP.TabIndex = 16;
             this.lblBaseP.Text = "Base";
             // 
+            // lblTamanho
+            // 
+            this.lblTamanho.AutoSize = true;
+            this.lblTamanho.Location = new System.Drawing.Point(48, 36);
+            this.lblTamanho.Name = "lblTamanho";
+            this.lblTamanho.Size = new System.Drawing.Size(124, 13);
+            this.lblTamanho.TabIndex = 18;
+            this.lblTamanho.Text = "Tamanho das estruturas:";
+            // 
             // formIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(473, 320);
+            this.Controls.Add(this.lblTamanho);
             this.Controls.Add(this.lblTopoP);
             this.Controls.Add(this.lblBaseP);
             this.Controls.Add(this.lblTopoF);
@@ -209,6 +220,7 @@
         private System.Windows.Forms.Label lblTopoF;
         private System.Windows.Forms.Label lblTopoP;
         private System.Windows.Forms.Label lblBaseP;
+        private System.Windows.Forms.Label lblTamanho;
     }
 }
 
